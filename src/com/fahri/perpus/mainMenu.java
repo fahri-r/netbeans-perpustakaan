@@ -82,6 +82,7 @@ public class mainMenu extends javax.swing.JFrame {
         btn_pinjam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_pinjam.setForeground(new java.awt.Color(255, 255, 255));
         btn_pinjam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_pinjam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/jadwal.png"))); // NOI18N
         btn_pinjam.setText("Peminjaman");
         btn_pinjam.setOpaque(true);
         btn_pinjam.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,6 +95,7 @@ public class mainMenu extends javax.swing.JFrame {
         btn_buku.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_buku.setForeground(new java.awt.Color(255, 255, 255));
         btn_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_buku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buku.png"))); // NOI18N
         btn_buku.setText("Buku");
         btn_buku.setOpaque(true);
         btn_buku.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,6 +108,7 @@ public class mainMenu extends javax.swing.JFrame {
         btn_mahasiswa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_mahasiswa.setForeground(new java.awt.Color(255, 255, 255));
         btn_mahasiswa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_mahasiswa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mahasiswa.png"))); // NOI18N
         btn_mahasiswa.setText("Mahasiswa");
         btn_mahasiswa.setOpaque(true);
         btn_mahasiswa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,6 +121,7 @@ public class mainMenu extends javax.swing.JFrame {
         btn_pegawai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_pegawai.setForeground(new java.awt.Color(255, 255, 255));
         btn_pegawai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_pegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pegawai.png"))); // NOI18N
         btn_pegawai.setText("Pegawai");
         btn_pegawai.setOpaque(true);
         btn_pegawai.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,7 +149,7 @@ public class mainMenu extends javax.swing.JFrame {
         btn_search.setBackground(new java.awt.Color(87, 101, 116));
         btn_search.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btn_search.setForeground(new java.awt.Color(74, 209, 161));
-        btn_search.setText("Cari");
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         btn_search.setBorderPainted(false);
         btn_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -173,8 +177,8 @@ public class mainMenu extends javax.swing.JFrame {
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout headingLayout = new javax.swing.GroupLayout(heading);
@@ -185,11 +189,11 @@ public class mainMenu extends javax.swing.JFrame {
                 .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headingLayout.createSequentialGroup()
                         .addGap(125, 125, 125)
-                        .addComponent(btn_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(btn_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -233,8 +237,10 @@ public class mainMenu extends javax.swing.JFrame {
         btn_delete.setBackground(new java.awt.Color(74, 209, 161));
         btn_delete.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(255, 255, 255));
-        btn_delete.setText("Hapus Data");
+        btn_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        btn_delete.setText("Hapus ");
         btn_delete.setBorderPainted(false);
+        btn_delete.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_delete.setPreferredSize(new java.awt.Dimension(97, 35));
         btn_delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -253,8 +259,10 @@ public class mainMenu extends javax.swing.JFrame {
         btn_add.setBackground(new java.awt.Color(74, 209, 161));
         btn_add.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btn_add.setForeground(new java.awt.Color(255, 255, 255));
-        btn_add.setText("Tambah Data");
+        btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
+        btn_add.setText("Tambah");
         btn_add.setBorderPainted(false);
+        btn_add.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_add.setPreferredSize(new java.awt.Dimension(97, 35));
         btn_add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -273,8 +281,10 @@ public class mainMenu extends javax.swing.JFrame {
         btn_refresh.setBackground(new java.awt.Color(74, 209, 161));
         btn_refresh.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btn_refresh.setForeground(new java.awt.Color(255, 255, 255));
+        btn_refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/refresh.png"))); // NOI18N
         btn_refresh.setText("Refresh");
         btn_refresh.setBorderPainted(false);
+        btn_refresh.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_refresh.setPreferredSize(new java.awt.Dimension(97, 35));
         btn_refresh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -293,8 +303,10 @@ public class mainMenu extends javax.swing.JFrame {
         btn_edit.setBackground(new java.awt.Color(74, 209, 161));
         btn_edit.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btn_edit.setForeground(new java.awt.Color(255, 255, 255));
-        btn_edit.setText("Edit Data");
+        btn_edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit.png"))); // NOI18N
+        btn_edit.setText("Edit");
         btn_edit.setBorderPainted(false);
+        btn_edit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_edit.setPreferredSize(new java.awt.Dimension(97, 35));
         btn_edit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
