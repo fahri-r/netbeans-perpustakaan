@@ -50,6 +50,7 @@ public class mainMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btn_credits = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
         search = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
@@ -72,6 +73,13 @@ public class mainMenu extends javax.swing.JFrame {
         mahasiswa = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tb_mahasiswa = new javax.swing.JTable();
+        credits = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -144,6 +152,19 @@ public class mainMenu extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("buku adalah jendela dunia");
 
+        btn_credits.setBackground(new java.awt.Color(74, 209, 161));
+        btn_credits.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_credits.setForeground(new java.awt.Color(255, 255, 255));
+        btn_credits.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_credits.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/credits.png"))); // NOI18N
+        btn_credits.setText("Credits");
+        btn_credits.setOpaque(true);
+        btn_credits.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_creditsMouseClicked(evt);
+            }
+        });
+
         search.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 3, 1, 3));
 
         btn_search.setBackground(new java.awt.Color(87, 101, 116));
@@ -196,6 +217,8 @@ public class mainMenu extends javax.swing.JFrame {
                         .addComponent(btn_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(headingLayout.createSequentialGroup()
@@ -226,7 +249,8 @@ public class mainMenu extends javax.swing.JFrame {
                     .addComponent(btn_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(headingLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -417,11 +441,77 @@ public class mainMenu extends javax.swing.JFrame {
 
         jPanel1.add(mahasiswa, "card2");
 
+        credits.setBackground(new java.awt.Color(87, 101, 116));
+        credits.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Coder");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Icon Pack");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText(":");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText(":");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Material Design");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Muhammad Fahri Ramadhan");
+
+        javax.swing.GroupLayout creditsLayout = new javax.swing.GroupLayout(credits);
+        credits.setLayout(creditsLayout);
+        creditsLayout.setHorizontalGroup(
+            creditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(creditsLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(creditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(creditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(creditsLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9))
+                    .addGroup(creditsLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)))
+                .addContainerGap(765, Short.MAX_VALUE))
+        );
+        creditsLayout.setVerticalGroup(
+            creditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(creditsLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(creditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(creditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8))
+                .addContainerGap(139, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(credits, "card2");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 839, Short.MAX_VALUE)
+            .addGap(0, 1323, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
@@ -449,7 +539,7 @@ public class mainMenu extends javax.swing.JFrame {
                     .addComponent(btn_edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_refresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(7, 7, 7)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -463,7 +553,7 @@ public class mainMenu extends javax.swing.JFrame {
                 .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 73, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -490,14 +580,17 @@ public class mainMenu extends javax.swing.JFrame {
         resetcolor(btn_buku);
         resetcolor(btn_mahasiswa);
         resetcolor(btn_pegawai);
+        resetcolor(btn_credits);
         pinjam.setVisible(true);
         buku.setVisible(false);
         mahasiswa.setVisible(false);
         pegawai.setVisible(false);
+        credits.setVisible(false);
     }//GEN-LAST:event_btn_pinjamMouseClicked
 
     private void btn_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bukuMouseClicked
         newcolor(btn_buku);
+        resetcolor(btn_credits);
         resetcolor(btn_pinjam);
         resetcolor(btn_mahasiswa);
         resetcolor(btn_pegawai);
@@ -505,21 +598,25 @@ public class mainMenu extends javax.swing.JFrame {
         pinjam.setVisible(false);
         mahasiswa.setVisible(false);
         pegawai.setVisible(false);
+        credits.setVisible(false);
     }//GEN-LAST:event_btn_bukuMouseClicked
 
     private void btn_pegawaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pegawaiMouseClicked
         newcolor(btn_pegawai);
         resetcolor(btn_pinjam);
+        resetcolor(btn_credits);
         resetcolor(btn_mahasiswa);
         resetcolor(btn_buku);
         pegawai.setVisible(true);
         pinjam.setVisible(false);
         mahasiswa.setVisible(false);
         buku.setVisible(false);
+        credits.setVisible(false);
     }//GEN-LAST:event_btn_pegawaiMouseClicked
 
     private void btn_mahasiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_mahasiswaMouseClicked
         newcolor(btn_mahasiswa);
+        resetcolor(btn_credits);
         resetcolor(btn_pinjam);
         resetcolor(btn_buku);
         resetcolor(btn_pegawai);
@@ -527,6 +624,7 @@ public class mainMenu extends javax.swing.JFrame {
         pinjam.setVisible(false);
         buku.setVisible(false);
         pegawai.setVisible(false);
+        credits.setVisible(false);
     }//GEN-LAST:event_btn_mahasiswaMouseClicked
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
@@ -697,6 +795,19 @@ public class mainMenu extends javax.swing.JFrame {
      btn_search.setBackground(new java.awt.Color(87,101,116));
      btn_search.setForeground(new java.awt.Color(74,209,161));
     }//GEN-LAST:event_btn_searchMouseExited
+
+    private void btn_creditsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_creditsMouseClicked
+        newcolor(btn_credits);
+        resetcolor(btn_mahasiswa);
+        resetcolor(btn_pinjam);
+        resetcolor(btn_buku);
+        resetcolor(btn_pegawai);
+        mahasiswa.setVisible(false);
+        pinjam.setVisible(false);
+        buku.setVisible(false);
+        pegawai.setVisible(false);
+        credits.setVisible(true);
+    }//GEN-LAST:event_btn_creditsMouseClicked
 private void search_pinjam(){
    String cari = search.getText();
 
@@ -977,6 +1088,7 @@ private void search_mahasiswa(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
     private javax.swing.JLabel btn_buku;
+    private javax.swing.JLabel btn_credits;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_edit;
     private javax.swing.JLabel btn_mahasiswa;
@@ -985,10 +1097,17 @@ private void search_mahasiswa(){
     private javax.swing.JButton btn_refresh;
     private javax.swing.JButton btn_search;
     private javax.swing.JPanel buku;
+    private javax.swing.JPanel credits;
     private javax.swing.JPanel heading;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
