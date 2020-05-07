@@ -199,7 +199,7 @@ public class login extends javax.swing.JFrame {
 
     public void viewuser() {
         try {
-            String sql = "select nama_pegawai from pegawai join users on users.id=pegawai.id_users;";
+            String sql = "select nama_pegawai from pegawai join users on '"+user+"'=pegawai.id_users;";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);

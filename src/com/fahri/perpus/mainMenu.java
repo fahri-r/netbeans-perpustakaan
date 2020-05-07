@@ -672,17 +672,7 @@ public class mainMenu extends javax.swing.JFrame {
             }
             load_table_buku();
         } else if(pegawai.isVisible()) {
-            String sql = "delete from pegawai Where nip=?";
-            int tabelData = tb_pegawai.getSelectedRow();
-            try {
-                java.sql.Connection conn = (Connection) koneksi.configDB();
-                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-                pst.setString(1, tb_pegawai.getValueAt(tabelData, 0).toString());
-                pst.execute();
-                JOptionPane.showMessageDialog(this, "Data berhasil di hapus");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }
+            getUser();
             load_table_pegawai();
         }
         else System.out.print("Tidak bisa membuka");
@@ -1096,7 +1086,37 @@ public class mainMenu extends javax.swing.JFrame {
             System.out.println("Salah prosedur viewnip");
         }
     }
-
+    String idUser=null;
+    public void getUser(){
+            int tabelData = tb_pegawai.getSelectedRow();
+            String user=(tb_pegawai.getValueAt(tabelData, 0).toString());
+             try {
+            String sql = "select * from pegawai Where nip='"+user+"';";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            if (res.next()) {
+                idUser=res.getString("id_users");
+                deleteUser();
+            } else {
+                System.out.println("Gagal mendapat id");
+            }
+        } catch (Exception e) {
+            System.out.println("Salah prosedur");
+        }
+}
+        public void deleteUser(){
+            String sql = "delete from users Where id='"+idUser+"'";
+            try {
+                java.sql.Connection conn = (Connection) koneksi.configDB();
+                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "Data berhasil di hapus");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+    
+        }
     /**
      * @param args the command line arguments
      */
