@@ -48,8 +48,6 @@ public class mainMenu extends javax.swing.JFrame {
         btn_mahasiswa = new javax.swing.JLabel();
         btn_pegawai = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btn_credits = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
         search = new javax.swing.JTextField();
@@ -142,17 +140,8 @@ public class mainMenu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("e-PERPUSTAKAAN");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("_______________");
-        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("buku adalah jendela dunia");
 
         btn_credits.setBackground(new java.awt.Color(74, 209, 161));
         btn_credits.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -225,9 +214,9 @@ public class mainMenu extends javax.swing.JFrame {
         headingLayout.setHorizontalGroup(
             headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createSequentialGroup()
-                .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(91, 91, 91)
+                .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(headingLayout.createSequentialGroup()
-                        .addGap(125, 125, 125)
                         .addComponent(btn_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,16 +226,8 @@ public class mainMenu extends javax.swing.JFrame {
                         .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(headingLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel1))
-                    .addGroup(headingLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(headingLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 564, Short.MAX_VALUE)
                 .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createSequentialGroup()
                         .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,19 +241,15 @@ public class mainMenu extends javax.swing.JFrame {
         headingLayout.setVerticalGroup(
             headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headingLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(namauser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headingLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
+                        .addGap(89, 89, 89)
+                        .addComponent(namauser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1))
                     .addGroup(headingLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -529,7 +506,7 @@ public class mainMenu extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel8))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         jPanel1.add(credits, "card2");
@@ -580,7 +557,7 @@ public class mainMenu extends javax.swing.JFrame {
                 .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -694,7 +671,7 @@ public class mainMenu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
             load_table_buku();
-        } else {
+        } else if(pegawai.isVisible()) {
             String sql = "delete from pegawai Where nip=?";
             int tabelData = tb_pegawai.getSelectedRow();
             try {
@@ -708,6 +685,7 @@ public class mainMenu extends javax.swing.JFrame {
             }
             load_table_pegawai();
         }
+        else System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
@@ -717,8 +695,9 @@ public class mainMenu extends javax.swing.JFrame {
             viewnip();
         } else if (buku.isVisible())
             new bukuForm().setVisible(true);
-        else
+        else if(pegawai.isVisible())
             new pegawaiForm().setVisible(true);
+        else System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
@@ -728,8 +707,9 @@ public class mainMenu extends javax.swing.JFrame {
             load_table_pinjam();
         else if (buku.isVisible())
             load_table_buku();
-        else
+        else if(pegawai.isVisible())
             load_table_pegawai();
+        else System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_refreshActionPerformed
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
@@ -763,7 +743,7 @@ public class mainMenu extends javax.swing.JFrame {
             bF.ambilpengarang = (tb_buku.getValueAt(tabelData, 3).toString());
             bF.ambilthnterbit = (tb_buku.getValueAt(tabelData, 4).toString());
             bF.viewData();
-        } else {
+        } else if(pegawai.isVisible()) {
             pegawaiFormEdit pF = new pegawaiFormEdit();
             pF.setVisible(true);
             int tabelData = tb_pegawai.getSelectedRow();
@@ -771,6 +751,7 @@ public class mainMenu extends javax.swing.JFrame {
             pF.ambilnama = (tb_pegawai.getValueAt(tabelData, 1).toString());
             pF.viewData();
         }
+        else System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addMouseEntered
@@ -1168,8 +1149,6 @@ public class mainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel heading;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

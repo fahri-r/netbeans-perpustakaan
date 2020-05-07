@@ -8,3 +8,8 @@
 
 - Username : admin
 - Password : admin
+
+### Catatan
+
+- Jika sudah menambah atau mengedit data pastikan tekan tombol refresh setelahnya
+- Saat menginput Data Peminjaman, pastikan klik tombol "Cek Data" terlebih dahulu untuk memastikan data yang telah diisikan dapat diinput ke database
