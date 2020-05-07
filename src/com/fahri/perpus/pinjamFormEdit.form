@@ -114,6 +114,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtnip">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtnpm">
     </Component>
@@ -144,6 +147,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtkodebuku">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtkodebukuActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="tambahPinjam">
       <Properties>

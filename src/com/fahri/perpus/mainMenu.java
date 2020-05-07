@@ -54,6 +54,8 @@ public class mainMenu extends javax.swing.JFrame {
         searchPanel = new javax.swing.JPanel();
         search = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        namauser = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btn_delete = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
@@ -202,11 +204,27 @@ public class mainMenu extends javax.swing.JFrame {
                 .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jButton1.setBackground(new java.awt.Color(87, 101, 116));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Logout");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        namauser.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        namauser.setForeground(new java.awt.Color(255, 255, 255));
+        namauser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        namauser.setText("Nama Pegawai");
+        namauser.setPreferredSize(new java.awt.Dimension(79, 30));
+
         javax.swing.GroupLayout headingLayout = new javax.swing.GroupLayout(heading);
         heading.setLayout(headingLayout);
         headingLayout.setHorizontalGroup(
             headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headingLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createSequentialGroup()
                 .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headingLayout.createSequentialGroup()
                         .addGap(125, 125, 125)
@@ -218,42 +236,51 @@ public class mainMenu extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(headingLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel1))
+                    .addGroup(headingLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(headingLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createSequentialGroup()
                         .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(headingLayout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel1))
-                            .addGroup(headingLayout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(headingLayout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createSequentialGroup()
+                        .addComponent(namauser, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))))
         );
         headingLayout.setVerticalGroup(
             headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headingLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(headingLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(namauser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headingLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(headingLayout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel2.setBackground(new java.awt.Color(87, 101, 116));
@@ -502,7 +529,7 @@ public class mainMenu extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel8))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         jPanel1.add(credits, "card2");
@@ -553,7 +580,7 @@ public class mainMenu extends javax.swing.JFrame {
                 .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -686,9 +713,9 @@ public class mainMenu extends javax.swing.JFrame {
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         if (mahasiswa.isVisible())
             new mahasiswaForm().setVisible(true);
-        else if (pinjam.isVisible())
-            new pinjamForm().setVisible(true);
-        else if (buku.isVisible())
+        else if (pinjam.isVisible()) {
+            viewnip();
+        } else if (buku.isVisible())
             new bukuForm().setVisible(true);
         else
             new pegawaiForm().setVisible(true);
@@ -779,21 +806,26 @@ public class mainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_refreshMouseExited
 
     private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
-        if(mahasiswa.isVisible())search_mahasiswa();
-        else if(buku.isVisible())search_buku();
-        else if(pinjam.isVisible())search_pinjam();
-        else search_pegawai();
+        if (mahasiswa.isVisible()) {
+            search_mahasiswa();
+        } else if (buku.isVisible()) {
+            search_buku();
+        } else if (pinjam.isVisible()) {
+            search_pinjam();
+        } else {
+            search_pegawai();
+        }
         search.setText(null);
     }//GEN-LAST:event_btn_searchActionPerformed
 
     private void btn_searchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_searchMouseEntered
-     btn_search.setBackground(new java.awt.Color(86,109,148));
-     btn_search.setForeground(new java.awt.Color(255,255,255));
+        btn_search.setBackground(new java.awt.Color(86, 109, 148));
+        btn_search.setForeground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_btn_searchMouseEntered
 
     private void btn_searchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_searchMouseExited
-     btn_search.setBackground(new java.awt.Color(87,101,116));
-     btn_search.setForeground(new java.awt.Color(74,209,161));
+        btn_search.setBackground(new java.awt.Color(87, 101, 116));
+        btn_search.setForeground(new java.awt.Color(74, 209, 161));
     }//GEN-LAST:event_btn_searchMouseExited
 
     private void btn_creditsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_creditsMouseClicked
@@ -808,8 +840,14 @@ public class mainMenu extends javax.swing.JFrame {
         pegawai.setVisible(false);
         credits.setVisible(true);
     }//GEN-LAST:event_btn_creditsMouseClicked
-private void search_pinjam(){
-   String cari = search.getText();
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+        login l = new login();
+        l.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void search_pinjam() {
+        String cari = search.getText();
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
@@ -838,16 +876,16 @@ private void search_pinjam(){
                 String npm = res.getString("npm");
                 String tgl_pinjam = res.getString("tgl_pinjam");
                 String tgl_kembali = res.getString("tgl_kembali");
-                String[] dataField = {id_pinjam, kode_buku, nip, npm,tgl_pinjam,tgl_kembali};
+                String[] dataField = {id_pinjam, kode_buku, nip, npm, tgl_pinjam, tgl_kembali};
                 model.addRow(dataField);
             }
             tb_pinjam.setModel(model);
         } catch (Exception e) {
-        } 
-}
-    
-    private void search_pegawai(){
-  String cari = search.getText();
+        }
+    }
+
+    private void search_pegawai() {
+        String cari = search.getText();
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("NIP");
@@ -869,11 +907,11 @@ private void search_pinjam(){
             }
             tb_pegawai.setModel(model);
         } catch (Exception e) {
-        }  
-}
-    
-    private void search_buku(){
-    String cari = search.getText();
+        }
+    }
+
+    private void search_buku() {
+        String cari = search.getText();
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Kode Buku");
@@ -899,16 +937,16 @@ private void search_pinjam(){
                 String penerbit = res.getString("penerbit");
                 String pengarang = res.getString("pengarang");
                 String thn_terbit = res.getString("thn_terbit");
-                String[] dataField = {kode_buku, judul_buku, penerbit, pengarang,thn_terbit};
+                String[] dataField = {kode_buku, judul_buku, penerbit, pengarang, thn_terbit};
                 model.addRow(dataField);
             }
             tb_buku.setModel(model);
         } catch (Exception e) {
         }
-}
-    
-private void search_mahasiswa(){
-  String cari = search.getText();
+    }
+
+    private void search_mahasiswa() {
+        String cari = search.getText();
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("NPM");
@@ -936,8 +974,8 @@ private void search_mahasiswa(){
             }
             tb_mahasiswa.setModel(model);
         } catch (Exception e) {
-        }  
-}    
+        }
+    }
 
 //------------------------------------LOAD TABLE------------------------------
     private void load_table_pinjam() {
@@ -975,7 +1013,7 @@ private void search_mahasiswa(){
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
-                model.addRow(new Object[]{res.getString(1), res.getString(2)});
+                model.addRow(new Object[]{res.getString(1), res.getString(3)});
             }
             tb_pegawai.setModel(model);
         } catch (Exception e) {
@@ -1029,9 +1067,8 @@ private void search_mahasiswa(){
         } catch (Exception e) {
         }
     }
-    
-//----------SET BUTTON COLOR----------------
 
+//----------SET BUTTON COLOR----------------
     public void hovercolor(javax.swing.JButton btn) {
         btn.setBackground(new java.awt.Color(0, 187, 150));
     }
@@ -1047,6 +1084,36 @@ private void search_mahasiswa(){
 
     public void resetcolor(javax.swing.JLabel lbl) {
         lbl.setBackground(new java.awt.Color(74, 209, 161));
+    }
+
+    public String ambiluser;
+
+    public String getambiluser() {
+        return ambiluser;
+    }
+
+    //-----------View Login Account--------------
+    public void viewData() {
+        namauser.setText(ambiluser);
+    }
+
+    public void viewnip() {
+        try {
+            String sql = "select nip from pegawai where nama_pegawai='" + namauser.getText() + "';";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            if (res.next()) {
+                pinjamForm pF = new pinjamForm();
+                pF.ambilnip = res.getString("nip");
+                pF.viewData();
+                pF.setVisible(true);
+            } else {
+                System.out.println("Gagal menampilkan Nip");
+            }
+        } catch (Exception e) {
+            System.out.println("Salah prosedur viewnip");
+        }
     }
 
     /**
@@ -1099,6 +1166,7 @@ private void search_mahasiswa(){
     private javax.swing.JPanel buku;
     private javax.swing.JPanel credits;
     private javax.swing.JPanel heading;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1116,6 +1184,7 @@ private void search_mahasiswa(){
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel mahasiswa;
+    private javax.swing.JLabel namauser;
     private javax.swing.JPanel pegawai;
     private javax.swing.JPanel pinjam;
     private javax.swing.JTextField search;

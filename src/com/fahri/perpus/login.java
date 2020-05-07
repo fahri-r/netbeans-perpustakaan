@@ -22,14 +22,16 @@ import javax.swing.JOptionPane;
  * @author Unknown
  */
 public class login extends javax.swing.JFrame {
-public mainMenu mm= new mainMenu();
+
+    public mainMenu mm = new mainMenu();
+
     /**
      * Creates new form mahasiswaForm
      */
     public login() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2,dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
 
     /**
@@ -48,8 +50,8 @@ public mainMenu mm= new mainMenu();
         txtpassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tambah Data Mahasiswa");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setPreferredSize(new java.awt.Dimension(400, 300));
         setSize(new java.awt.Dimension(400, 300));
 
@@ -78,21 +80,21 @@ public mainMenu mm= new mainMenu();
                 .addComponent(jLabel1)
                 .addGap(70, 70, 70))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(174, 174, 174)
-                            .addComponent(btn_login))
+                            .addContainerGap()
+                            .addComponent(jLabel8)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(36, 36, 36)
                             .addComponent(jLabel7)
                             .addGap(18, 18, 18)
-                            .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(btn_login)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -108,58 +110,88 @@ public mainMenu mm= new mainMenu();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addComponent(btn_login)
-                .addContainerGap())
+                .addContainerGap(52, Short.MAX_VALUE))
         );
-
-        getAccessibleContext().setAccessibleName("Login");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-String password=md5Java(String.valueOf(txtpassword.getPassword()));
+        String password = md5Java(String.valueOf(txtpassword.getPassword()));
         try {
-            String sql = "Select * From users Where username = '"+txtusername.getText()+"' and password = '"+ password +"'";
+            String sql = "Select * From users Where username = '" + txtusername.getText() + "' and password = '" + password + "'";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet res = stm.executeQuery(sql);          
-            if (res.next()){
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            if (res.next()) {
                 mm.setVisible(true);
+                user();
                 dispose();
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Gagal Login");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Salah prosedur");
         }
     }//GEN-LAST:event_btn_loginActionPerformed
- public static String md5Java(String message)
-    {
+    public static String md5Java(String message) {
         String digest = null;
         try {
-                MessageDigest md = MessageDigest.getInstance("MD5");
-                byte[] hash = md.digest(message.getBytes("UTF-8"));
-                StringBuilder sb = new StringBuilder(2*hash.length);
-                for(byte b : hash)
-                {
-                        sb.append(String.format("%02x", b&0xff));
-                }
-                digest = sb.toString();
-            } catch (UnsupportedEncodingException ex)
-                {
-                        Logger.getLogger(mainMenu.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (NoSuchAlgorithmException ex)
-                        {
-                                Logger.getLogger(mainMenu.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        return digest;
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] hash = md.digest(message.getBytes("UTF-8"));
+            StringBuilder sb = new StringBuilder(2 * hash.length);
+            for (byte b : hash) {
+                sb.append(String.format("%02x", b & 0xff));
+            }
+            digest = sb.toString();
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(mainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(mainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return digest;
     }
- 
-    public static void main(String[] args)
-    {
+    
+//-------------View Login Account----------------------------
+    String user = null;
+
+    public void user() {
+        try {
+            String sql = "select id from users where username='" + txtusername.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            if (res.next()) {
+                user = res.getString("id");
+                viewuser();
+            } else {
+                System.out.println("Gagal Login");
+            }
+        } catch (Exception e) {
+            System.out.println("Salah prosedur");
+        }
+    }
+
+    public void viewuser() {
+        try {
+            String sql = "select nama_pegawai from pegawai join users on users.id=pegawai.id_users;";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            if (res.next()) {
+                mm.ambiluser = res.getString("nama_pegawai");
+                mm.viewData();
+            } else {
+                System.out.println("Gagal menampilkan nama user");
+            }
+        } catch (Exception e) {
+            System.out.println("Salah prosedur viewuser");
+        }
+    }
+//---------------------------------------------------------------------------------------
+    public static void main(String[] args) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 

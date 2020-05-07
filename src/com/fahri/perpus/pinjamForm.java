@@ -25,7 +25,7 @@ public class pinjamForm extends javax.swing.JFrame {
     public pinjamForm() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2,dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
     }
 
@@ -57,6 +57,8 @@ public class pinjamForm extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Kode Buku");
         jLabel5.setToolTipText("");
+
+        txtnip.setEditable(false);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("NPM");
@@ -152,69 +154,83 @@ public class pinjamForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void view_mahasiswa(){
-        try{
-            String sql = "Select nama_mahasiswa from mahasiswa where npm='"+txtnpm.getText()+"'";
-            java.sql.Connection conn=(Connection)koneksi.configDB();
-            java.sql.Statement stm=conn.createStatement();
-            java.sql.ResultSet res=stm.executeQuery(sql);
-            while(res.next())
-              txthasilnpm.setText(res.getString(1));
-        }catch(Exception e){
+    public void view_mahasiswa() {
+        try {
+            String sql = "Select nama_mahasiswa from mahasiswa where npm='" + txtnpm.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while (res.next()) {
+                txthasilnpm.setText(res.getString(1));
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    
-    public void view_pegawai(){
-        try{
-            String sql = "Select nama_pegawai from pegawai where nip='"+txtnip.getText()+"'";
-            java.sql.Connection conn=(Connection)koneksi.configDB();
-            java.sql.Statement stm=conn.createStatement();
-            java.sql.ResultSet res=stm.executeQuery(sql);
-            while(res.next())
-              txthasilnip.setText(res.getString(1));
-        }catch(Exception e){
+
+    public void view_pegawai() {
+        try {
+            String sql = "Select nama_pegawai from pegawai where nip='" + txtnip.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while (res.next()) {
+                txthasilnip.setText(res.getString(1));
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    
-    public void view_buku(){
-        try{
-            String sql = "Select judul_buku from buku where kode_buku='"+txtkodebuku.getText()+"'";
-            java.sql.Connection conn=(Connection)koneksi.configDB();
-            java.sql.Statement stm=conn.createStatement();
-            java.sql.ResultSet res=stm.executeQuery(sql);
-            while(res.next())
-              txthasilkodebuku.setText(res.getString(1));
-        }catch(Exception e){
+
+    public void view_buku() {
+        try {
+            String sql = "Select judul_buku from buku where kode_buku='" + txtkodebuku.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while (res.next()) {
+                txthasilkodebuku.setText(res.getString(1));
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-          
+
     private void cekDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cekDataActionPerformed
-    txthasilnip.setText(null);
-    txthasilnpm.setText(null);
-    txthasilkodebuku.setText(null);
-    view_mahasiswa();
-    view_pegawai();
-    view_buku();
+        txthasilnip.setText(null);
+        txthasilnpm.setText(null);
+        txthasilkodebuku.setText(null);
+        view_mahasiswa();
+        view_pegawai();
+        view_buku();
     }//GEN-LAST:event_cekDataActionPerformed
 
     private void tambahPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahPinjamActionPerformed
-        LocalDate sourceDate=LocalDate.now();
+        LocalDate sourceDate = LocalDate.now();
         LocalDate destDate = sourceDate.plusDays(3);
         String str = destDate.format(DateTimeFormatter.ofPattern("yyy-MM-dd"));
-        try{
-            String sql = "INSERT INTO pinjam (kode_buku,nip,npm,tgl_kembali)VALUES('"+txtkodebuku.getText()+"','"+txtnip.getText()+"','"+txtnpm.getText()+"','"+str+"')";
-            java.sql.Connection conn=(Connection)koneksi.configDB();
-            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+        try {
+            String sql = "INSERT INTO pinjam (kode_buku,nip,npm,tgl_kembali)VALUES('" + txtkodebuku.getText() + "','" + txtnip.getText() + "','" + txtnpm.getText() + "','" + str + "')";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();
-            JOptionPane.showMessageDialog(null,"Penyimpanan Data Berhasil");
+            JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
             dispose();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_tambahPinjamActionPerformed
+
+    public String ambilnip;
+
+    public String getambilnip() {
+        return ambilnip;
+    }
+
+    //-----------View Login Account--------------
+    public void viewData() {
+        txtnip.setText(ambilnip);
+    }
 
     /**
      * @param args the command line arguments

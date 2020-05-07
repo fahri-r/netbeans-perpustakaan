@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2020 at 01:41 PM
+-- Generation Time: May 07, 2020 at 02:15 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -57,8 +57,16 @@ CREATE TABLE `mahasiswa` (
 
 CREATE TABLE `pegawai` (
   `nip` varchar(16) NOT NULL,
+  `id_users` int(11) NOT NULL,
   `nama_pegawai` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pegawai`
+--
+
+INSERT INTO `pegawai` (`nip`, `id_users`, `nama_pegawai`) VALUES
+('1194055', 1, 'Muhammad Fahri Ramadhan');
 
 -- --------------------------------------------------------
 
@@ -114,7 +122,8 @@ ALTER TABLE `mahasiswa`
 -- Indexes for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  ADD PRIMARY KEY (`nip`);
+  ADD PRIMARY KEY (`nip`),
+  ADD KEY `id_users` (`id_users`);
 
 --
 -- Indexes for table `pinjam`
@@ -150,6 +159,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pinjam`

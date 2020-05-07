@@ -72,6 +72,8 @@ public class pinjamFormEdit extends javax.swing.JFrame {
         jLabel5.setText("Kode Buku");
         jLabel5.setToolTipText("");
 
+        txtnip.setEditable(false);
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("NPM");
         jLabel7.setToolTipText("");
@@ -84,6 +86,12 @@ public class pinjamFormEdit extends javax.swing.JFrame {
         cekData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cekDataActionPerformed(evt);
+            }
+        });
+
+        txtkodebuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtkodebukuActionPerformed(evt);
             }
         });
 
@@ -224,6 +232,10 @@ public class pinjamFormEdit extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
     }//GEN-LAST:event_tambahPinjamActionPerformed
+
+    private void txtkodebukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkodebukuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtkodebukuActionPerformed
 
     /**
      * @param args the command line arguments
