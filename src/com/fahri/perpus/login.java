@@ -53,7 +53,6 @@ public class login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
-        setPreferredSize(new java.awt.Dimension(400, 300));
         setResizable(false);
         setSize(new java.awt.Dimension(400, 300));
 
@@ -99,9 +98,9 @@ public class login extends javax.swing.JFrame {
                         .addComponent(btn_login))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,11 +116,11 @@ public class login extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel8))
                 .addGap(33, 33, 33)
                 .addComponent(btn_login)
                 .addContainerGap(72, Short.MAX_VALUE))

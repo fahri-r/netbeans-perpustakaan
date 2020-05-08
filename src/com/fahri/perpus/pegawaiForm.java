@@ -156,15 +156,7 @@ public class pegawaiForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tambahPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahPegawaiActionPerformed
-        try{
         addUser();
-        cekUsername();
-        addIdentitas();
-            JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
-            dispose();
-        }catch(Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
     }//GEN-LAST:event_tambahPegawaiActionPerformed
 
     private void txtnama_pegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnama_pegawaiActionPerformed
@@ -196,6 +188,7 @@ public class pegawaiForm extends javax.swing.JFrame {
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();
+            cekUsername();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -211,6 +204,7 @@ public class pegawaiForm extends javax.swing.JFrame {
             java.sql.ResultSet res = stm.executeQuery(sql);
             if (res.next()) {
                 username = res.getString("id");
+                addIdentitas();
             } else {
                 System.out.println("Gagal mendapatkan username");
             }
@@ -225,6 +219,8 @@ public class pegawaiForm extends javax.swing.JFrame {
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();
+            JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
