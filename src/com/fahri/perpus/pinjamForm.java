@@ -27,6 +27,16 @@ public class pinjamForm extends javax.swing.JFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
+        mainMenu mm = new mainMenu();
+        if (mm.edit == true) {
+            updatePinjam.setVisible(true);
+            tambahPinjam.setVisible(false);
+            this.setTitle("Edit Data Peminjaman");
+        } else {
+            updatePinjam.setVisible(false);
+            tambahPinjam.setVisible(true);
+            this.setTitle("Tambah Data Peminjaman");
+        }
     }
 
     /**
@@ -49,10 +59,11 @@ public class pinjamForm extends javax.swing.JFrame {
         txthasilnpm = new javax.swing.JTextField();
         txtkodebuku = new javax.swing.JTextField();
         txthasilkodebuku = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         tambahPinjam = new javax.swing.JButton();
+        updatePinjam = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tambah Data Peminjaman");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(74, 209, 161));
@@ -96,6 +107,8 @@ public class pinjamForm extends javax.swing.JFrame {
         txthasilkodebuku.setBackground(new java.awt.Color(255, 255, 255));
         txthasilkodebuku.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 3, 1, 3));
 
+        jPanel2.setLayout(new java.awt.CardLayout());
+
         tambahPinjam.setBackground(new java.awt.Color(87, 101, 116));
         tambahPinjam.setForeground(new java.awt.Color(255, 255, 255));
         tambahPinjam.setText("Tambah Data");
@@ -105,6 +118,18 @@ public class pinjamForm extends javax.swing.JFrame {
                 tambahPinjamActionPerformed(evt);
             }
         });
+        jPanel2.add(tambahPinjam, "card2");
+
+        updatePinjam.setBackground(new java.awt.Color(87, 101, 116));
+        updatePinjam.setForeground(new java.awt.Color(255, 255, 255));
+        updatePinjam.setText("Update Data");
+        updatePinjam.setBorderPainted(false);
+        updatePinjam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePinjamActionPerformed(evt);
+            }
+        });
+        jPanel2.add(updatePinjam, "card3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,16 +157,16 @@ public class pinjamForm extends javax.swing.JFrame {
                         .addComponent(txthasilkodebuku, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(145, 145, 145)
                 .addComponent(cekData)
                 .addGap(126, 126, 126)
-                .addComponent(tambahPinjam)
-                .addGap(158, 158, 158))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txthasilkodebuku, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtkodebuku, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,11 +181,11 @@ public class pinjamForm extends javax.swing.JFrame {
                     .addComponent(txtnpm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txthasilnpm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tambahPinjam)
-                    .addComponent(cekData))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cekData)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,14 +268,36 @@ public class pinjamForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tambahPinjamActionPerformed
 
-    public String ambilnip;
+    private void updatePinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePinjamActionPerformed
+        try {
+            String sql = "UPDATE pinjam SET kode_buku='" + txtkodebuku.getText() + "',nip='" + txtnip.getText() + "',npm='" + txtnpm.getText() + "'WHERE id_pinjam";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_updatePinjamActionPerformed
+
+    public String ambilkode, ambilnip, ambilnpm;
+
+    public String getambilkode() {
+        return ambilkode;
+    }
 
     public String getambilnip() {
         return ambilnip;
     }
 
-    //-----------View Login Account--------------
+    public String getambilnpm() {
+        return ambilnpm;
+    }
+
     public void viewData() {
+        txtkodebuku.setText(ambilkode);
+        txtnpm.setText(ambilnpm);
         txtnip.setText(ambilnip);
     }
 
@@ -296,6 +343,7 @@ public class pinjamForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton tambahPinjam;
     private javax.swing.JTextField txthasilkodebuku;
     private javax.swing.JTextField txthasilnip;
@@ -303,5 +351,6 @@ public class pinjamForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtkodebuku;
     private javax.swing.JTextField txtnip;
     private javax.swing.JTextField txtnpm;
+    private javax.swing.JButton updatePinjam;
     // End of variables declaration//GEN-END:variables
 }

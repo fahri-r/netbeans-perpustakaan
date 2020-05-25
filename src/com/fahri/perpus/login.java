@@ -5,14 +5,12 @@
  */
 package com.fahri.perpus;
 
-import com.fahri.perpus.*;
 import com.mysql.jdbc.Connection;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -175,30 +173,11 @@ public class login extends javax.swing.JFrame {
         }
         return digest;
     }
-    
-//-------------View Login Account----------------------------
-    String user = null;
 
+//-------------View Login Account----------------------------
     public void user() {
         try {
-            String sql = "select id from users where username='" + txtusername.getText() + "'";
-            java.sql.Connection conn = (Connection) koneksi.configDB();
-            java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet res = stm.executeQuery(sql);
-            if (res.next()) {
-                user = res.getString("id");
-                viewuser();
-            } else {
-                System.out.println("Gagal Login");
-            }
-        } catch (Exception e) {
-            System.out.println("Salah prosedur");
-        }
-    }
-
-    public void viewuser() {
-        try {
-            String sql = "select nama_pegawai from pegawai join users on '"+user+"'=pegawai.id_users;";
+            String sql = "select nama_pegawai from users U inner join pegawai P on U.id=P.id_users where username='" + txtusername.getText() + "'";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
@@ -206,13 +185,14 @@ public class login extends javax.swing.JFrame {
                 mm.ambiluser = res.getString("nama_pegawai");
                 mm.viewData();
             } else {
-                System.out.println("Gagal menampilkan nama user");
+                System.out.println("Gagal Login");
             }
         } catch (Exception e) {
-            System.out.println("Salah prosedur viewuser");
+            System.out.println("Salah prosedur");
         }
     }
 //---------------------------------------------------------------------------------------
+
     public static void main(String[] args) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

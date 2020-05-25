@@ -29,6 +29,21 @@ public class pegawaiForm extends javax.swing.JFrame {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
+        mainMenu mm = new mainMenu();
+        if (mm.edit == true) {
+            updatePegawai.setVisible(true);
+            tambahPegawai.setVisible(false);
+            txtnip.setEditable(false);
+            txtusername.setEditable(false);
+            this.setTitle("Edit Data Pegawai");
+        } else {
+            updatePegawai.setVisible(false);
+            tambahPegawai.setVisible(true);
+            txtnip.setEditable(true);
+            txtusername.setEditable(true);
+            this.setTitle("Tambah Data Pegawai");
+        }
     }
 
     /**
@@ -45,14 +60,15 @@ public class pegawaiForm extends javax.swing.JFrame {
         txtnip = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtnama_pegawai = new javax.swing.JTextField();
-        tambahPegawai = new javax.swing.JButton();
         txtusername = new javax.swing.JTextField();
         txtpassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        updatePegawai = new javax.swing.JButton();
+        tambahPegawai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tambah Data Pegawai");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(74, 209, 161));
@@ -71,6 +87,27 @@ public class pegawaiForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Username");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Password");
+
+        jPanel2.setLayout(new java.awt.CardLayout());
+
+        updatePegawai.setBackground(new java.awt.Color(87, 101, 116));
+        updatePegawai.setForeground(new java.awt.Color(255, 255, 255));
+        updatePegawai.setText("Update Data");
+        updatePegawai.setBorderPainted(false);
+        updatePegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePegawaiActionPerformed(evt);
+            }
+        });
+        jPanel2.add(updatePegawai, "card2");
+
         tambahPegawai.setBackground(new java.awt.Color(87, 101, 116));
         tambahPegawai.setForeground(new java.awt.Color(255, 255, 255));
         tambahPegawai.setText("Tambah Data");
@@ -80,14 +117,7 @@ public class pegawaiForm extends javax.swing.JFrame {
                 tambahPegawaiActionPerformed(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Username");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Password");
+        jPanel2.add(tambahPegawai, "card3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,31 +126,32 @@ public class pegawaiForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtusername, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(txtnip, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(txtnama_pegawai, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(txtpassword))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
-                .addComponent(tambahPegawai)
-                .addGap(151, 151, 151))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtusername, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txtnip, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txtnama_pegawai, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txtpassword)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnip, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -136,9 +167,9 @@ public class pegawaiForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(tambahPegawai)
-                .addGap(30, 30, 30))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,6 +193,79 @@ public class pegawaiForm extends javax.swing.JFrame {
     private void txtnama_pegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnama_pegawaiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnama_pegawaiActionPerformed
+
+    private void updatePegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePegawaiActionPerformed
+        String password = md5Java(String.valueOf(txtpassword.getPassword()));
+        try {
+            String sql = "UPDATE pegawai SET nip='" + txtnip.getText() + "',nama_pegawai='" + txtnama_pegawai.getText() + "'WHERE nip='" + txtnip.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.execute();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        try {
+            String sql = "UPDATE users SET password='" + password + "'WHERE id='" + idUser + "'";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_updatePegawaiActionPerformed
+    String user = null;
+    String idUser = null;
+
+    public void getId() {
+        try {
+            String sql = "select id_users from pegawai where nip='" + txtnip.getText() + "'";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            if (res.next()) {
+                idUser = res.getString("id_users");
+                viewuser();
+            } else {
+                System.out.println("Gagal menampilkan id");
+            }
+        } catch (Exception e) {
+            System.out.println("Salah prosedur");
+        }
+    }
+
+    public void viewuser() {
+        try {
+            String sql = "select * from users  where id = '" + idUser + "';";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            if (res.next()) {
+                user = res.getString("username");
+                txtusername.setText(user);
+            } else {
+                System.out.println("Gagal menampilkan nama user");
+            }
+        } catch (Exception e) {
+            System.out.println("Salah prosedur viewuser");
+        }
+    }
+    public String ambilnip, ambilnama;
+
+    public String getambilnip() {
+        return ambilnip;
+    }
+
+    public String getambilnama() {
+        return ambilnama;
+    }
+
+    public void viewData() {
+        txtnip.setText(ambilnip);
+        txtnama_pegawai.setText(ambilnama);
+        getId();
+    }
 
     public static String md5Java(String message) {
         String digest = null;
@@ -268,10 +372,12 @@ public class pegawaiForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton tambahPegawai;
     private javax.swing.JTextField txtnama_pegawai;
     private javax.swing.JTextField txtnip;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
+    private javax.swing.JButton updatePegawai;
     // End of variables declaration//GEN-END:variables
 }

@@ -33,6 +33,8 @@ public class mainMenu extends javax.swing.JFrame {
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
     }
 
+    public static boolean edit = false;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -245,6 +247,7 @@ public class mainMenu extends javax.swing.JFrame {
                     .addGroup(headingLayout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(namauser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(jButton1))
                     .addGroup(headingLayout.createSequentialGroup()
                         .addGap(58, 58, 58)
@@ -671,23 +674,25 @@ public class mainMenu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
             load_table_buku();
-        } else if(pegawai.isVisible()) {
+        } else if (pegawai.isVisible()) {
             getUser();
             load_table_pegawai();
-        }
-        else System.out.print("Tidak bisa membuka");
+        } else
+            System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+        edit = false;
         if (mahasiswa.isVisible())
             new mahasiswaForm().setVisible(true);
         else if (pinjam.isVisible()) {
             viewnip();
         } else if (buku.isVisible())
             new bukuForm().setVisible(true);
-        else if(pegawai.isVisible())
+        else if (pegawai.isVisible())
             new pegawaiForm().setVisible(true);
-        else System.out.print("Tidak bisa membuka");
+        else
+            System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
@@ -697,14 +702,16 @@ public class mainMenu extends javax.swing.JFrame {
             load_table_pinjam();
         else if (buku.isVisible())
             load_table_buku();
-        else if(pegawai.isVisible())
+        else if (pegawai.isVisible())
             load_table_pegawai();
-        else System.out.print("Tidak bisa membuka");
+        else
+            System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_refreshActionPerformed
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
+        edit = true;
         if (mahasiswa.isVisible()) {
-            mahasiswaFormEdit mF = new mahasiswaFormEdit();
+            mahasiswaForm mF = new mahasiswaForm();
             mF.setVisible(true);
             int tabelData = tb_mahasiswa.getSelectedRow();
             mF.ambilnpm = (tb_mahasiswa.getValueAt(tabelData, 0).toString());
@@ -713,7 +720,7 @@ public class mainMenu extends javax.swing.JFrame {
             mF.ambilkelas = (tb_mahasiswa.getValueAt(tabelData, 3).toString());
             mF.viewData();
         } else if (pinjam.isVisible()) {
-            pinjamFormEdit piF = new pinjamFormEdit();
+            pinjamForm piF = new pinjamForm();
             piF.setVisible(true);
             int tabelData = tb_pinjam.getSelectedRow();
             piF.ambilkode = (tb_pinjam.getValueAt(tabelData, 1).toString());
@@ -724,7 +731,7 @@ public class mainMenu extends javax.swing.JFrame {
             piF.view_mahasiswa();
             piF.view_pegawai();
         } else if (buku.isVisible()) {
-            bukuFormEdit bF = new bukuFormEdit();
+            bukuForm bF = new bukuForm();
             bF.setVisible(true);
             int tabelData = tb_buku.getSelectedRow();
             bF.ambilkode = (tb_buku.getValueAt(tabelData, 0).toString());
@@ -733,15 +740,15 @@ public class mainMenu extends javax.swing.JFrame {
             bF.ambilpengarang = (tb_buku.getValueAt(tabelData, 3).toString());
             bF.ambilthnterbit = (tb_buku.getValueAt(tabelData, 4).toString());
             bF.viewData();
-        } else if(pegawai.isVisible()) {
-            pegawaiFormEdit pF = new pegawaiFormEdit();
+        } else if (pegawai.isVisible()) {
+            pegawaiForm pF = new pegawaiForm();
             pF.setVisible(true);
             int tabelData = tb_pegawai.getSelectedRow();
             pF.ambilnip = (tb_pegawai.getValueAt(tabelData, 0).toString());
             pF.ambilnama = (tb_pegawai.getValueAt(tabelData, 1).toString());
             pF.viewData();
-        }
-        else System.out.print("Tidak bisa membuka");
+        } else
+            System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addMouseEntered
@@ -1086,17 +1093,18 @@ public class mainMenu extends javax.swing.JFrame {
             System.out.println("Salah prosedur viewnip");
         }
     }
-    String idUser=null;
-    public void getUser(){
-            int tabelData = tb_pegawai.getSelectedRow();
-            String user=(tb_pegawai.getValueAt(tabelData, 0).toString());
-             try {
-            String sql = "select * from pegawai Where nip='"+user+"';";
+    String idUser = null;
+
+    public void getUser() {
+        int tabelData = tb_pegawai.getSelectedRow();
+        String user = (tb_pegawai.getValueAt(tabelData, 0).toString());
+        try {
+            String sql = "select * from pegawai Where nip='" + user + "';";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             if (res.next()) {
-                idUser=res.getString("id_users");
+                idUser = res.getString("id_users");
                 deleteUser();
             } else {
                 System.out.println("Gagal mendapat id");
@@ -1104,19 +1112,21 @@ public class mainMenu extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Salah prosedur");
         }
-}
-        public void deleteUser(){
-            String sql = "delete from users Where id='"+idUser+"'";
-            try {
-                java.sql.Connection conn = (Connection) koneksi.configDB();
-                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-                pst.execute();
-                JOptionPane.showMessageDialog(this, "Data berhasil di hapus");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }
-    
+    }
+
+    public void deleteUser() {
+        String sql = "delete from users Where id='" + idUser + "'";
+        try {
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(this, "Data berhasil di hapus");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
+
+    }
+
     /**
      * @param args the command line arguments
      */
