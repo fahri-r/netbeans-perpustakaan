@@ -5,7 +5,6 @@
  */
 package com.fahri.perpus;
 
-import com.fahri.perpus.*;
 import com.mysql.jdbc.Connection;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -270,7 +269,7 @@ public class pinjamForm extends javax.swing.JFrame {
 
     private void updatePinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePinjamActionPerformed
         try {
-            String sql = "UPDATE pinjam SET kode_buku='" + txtkodebuku.getText() + "',nip='" + txtnip.getText() + "',npm='" + txtnpm.getText() + "'WHERE id_pinjam";
+            String sql = "UPDATE pinjam SET kode_buku='" + txtkodebuku.getText() + "',nip='" + txtnip.getText() + "',npm='" + txtnpm.getText() + "'WHERE id_pinjam='"+ambilID+"'";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();
@@ -281,8 +280,11 @@ public class pinjamForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_updatePinjamActionPerformed
 
-    public String ambilkode, ambilnip, ambilnpm;
+    public String ambilkode, ambilnip, ambilnpm, ambilID;
 
+    public String getambilID() {
+        return ambilID;
+    }
     public String getambilkode() {
         return ambilkode;
     }

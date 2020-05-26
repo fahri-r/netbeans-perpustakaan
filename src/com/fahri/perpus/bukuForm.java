@@ -5,7 +5,6 @@
  */
 package com.fahri.perpus;
 
-import com.fahri.perpus.*;
 import com.mysql.jdbc.Connection;
 import java.awt.Dimension;
 import java.awt.Toolkit;

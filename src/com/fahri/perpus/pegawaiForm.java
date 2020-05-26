@@ -5,7 +5,6 @@
  */
 package com.fahri.perpus;
 
-import com.fahri.perpus.*;
 import com.mysql.jdbc.Connection;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -80,12 +79,6 @@ public class pegawaiForm extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nama");
-
-        txtnama_pegawai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnama_pegawaiActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,10 +182,6 @@ public class pegawaiForm extends javax.swing.JFrame {
     private void tambahPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahPegawaiActionPerformed
         addUser();
     }//GEN-LAST:event_tambahPegawaiActionPerformed
-
-    private void txtnama_pegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnama_pegawaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnama_pegawaiActionPerformed
 
     private void updatePegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePegawaiActionPerformed
         String password = md5Java(String.valueOf(txtpassword.getPassword()));

@@ -635,7 +635,7 @@ public class mainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_mahasiswaMouseClicked
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        if (mahasiswa.isVisible()) {
+        if (mahasiswa.isVisible() && !tb_mahasiswa.getSelectionModel().isSelectionEmpty()) {
             String sql = "delete from mahasiswa Where npm=?";
             int tabelData = tb_mahasiswa.getSelectedRow();
             try {
@@ -648,7 +648,7 @@ public class mainMenu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
             load_table_mahasiswa();
-        } else if (pinjam.isVisible()) {
+        } else if (pinjam.isVisible() && !tb_pinjam.getSelectionModel().isSelectionEmpty()) {
             String sql = "delete from pinjam Where id_pinjam=?";
             int tabelData = tb_pinjam.getSelectedRow();
             try {
@@ -661,7 +661,7 @@ public class mainMenu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
             load_table_pinjam();
-        } else if (buku.isVisible()) {
+        } else if (buku.isVisible() && !tb_buku.getSelectionModel().isSelectionEmpty()) {
             String sql = "delete from buku Where kode_buku=?";
             int tabelData = tb_buku.getSelectedRow();
             try {
@@ -674,11 +674,12 @@ public class mainMenu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
             load_table_buku();
-        } else if (pegawai.isVisible()) {
+        } else if (pegawai.isVisible() && !tb_pegawai.getSelectionModel().isSelectionEmpty()) {
             getUser();
             load_table_pegawai();
-        } else
-            System.out.print("Tidak bisa membuka");
+        } else {
+            JOptionPane.showMessageDialog(null, "Tidak ada data yang dipilih");
+        }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
@@ -710,7 +711,7 @@ public class mainMenu extends javax.swing.JFrame {
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         edit = true;
-        if (mahasiswa.isVisible()) {
+        if (mahasiswa.isVisible() && !tb_mahasiswa.getSelectionModel().isSelectionEmpty()) {
             mahasiswaForm mF = new mahasiswaForm();
             mF.setVisible(true);
             int tabelData = tb_mahasiswa.getSelectedRow();
@@ -719,18 +720,35 @@ public class mainMenu extends javax.swing.JFrame {
             mF.ambiljurusan = (tb_mahasiswa.getValueAt(tabelData, 2).toString());
             mF.ambilkelas = (tb_mahasiswa.getValueAt(tabelData, 3).toString());
             mF.viewData();
-        } else if (pinjam.isVisible()) {
+        } else if (pinjam.isVisible() && !tb_pinjam.getSelectionModel().isSelectionEmpty()) {
+            String kodeBuku = null, NPM = null, NIP = null;
+
             pinjamForm piF = new pinjamForm();
             piF.setVisible(true);
             int tabelData = tb_pinjam.getSelectedRow();
-            piF.ambilkode = (tb_pinjam.getValueAt(tabelData, 1).toString());
-            piF.ambilnip = (tb_pinjam.getValueAt(tabelData, 2).toString());
-            piF.ambilnpm = (tb_pinjam.getValueAt(tabelData, 3).toString());
+            piF.ambilID = (tb_pinjam.getValueAt(tabelData, 0).toString());
+
+            try {
+                String sql = "select*from pinjam P inner join buku B on P.kode_buku=B.kode_buku inner join Pegawai Pe on P.nip=Pe.nip inner join mahasiswa M on P.npm=M.npm where id_pinjam='" + piF.ambilID + "'";
+                java.sql.Connection conn = (Connection) koneksi.configDB();
+                java.sql.Statement stm = conn.createStatement();
+                java.sql.ResultSet res = stm.executeQuery(sql);
+                while (res.next()) {
+                    kodeBuku = res.getString("kode_buku");
+                    NIP = res.getString("nip");
+                    NPM = res.getString("npm");
+                }
+            } catch (Exception e) {
+            }
+
+            piF.ambilkode = (kodeBuku);
+            piF.ambilnip = (NIP);
+            piF.ambilnpm = (NPM);
             piF.viewData();
             piF.view_buku();
             piF.view_mahasiswa();
             piF.view_pegawai();
-        } else if (buku.isVisible()) {
+        } else if (buku.isVisible() && !tb_buku.getSelectionModel().isSelectionEmpty()) {
             bukuForm bF = new bukuForm();
             bF.setVisible(true);
             int tabelData = tb_buku.getSelectedRow();
@@ -740,15 +758,17 @@ public class mainMenu extends javax.swing.JFrame {
             bF.ambilpengarang = (tb_buku.getValueAt(tabelData, 3).toString());
             bF.ambilthnterbit = (tb_buku.getValueAt(tabelData, 4).toString());
             bF.viewData();
-        } else if (pegawai.isVisible()) {
+        } else if (pegawai.isVisible() && !tb_pegawai.getSelectionModel().isSelectionEmpty()) {
             pegawaiForm pF = new pegawaiForm();
             pF.setVisible(true);
             int tabelData = tb_pegawai.getSelectedRow();
             pF.ambilnip = (tb_pegawai.getValueAt(tabelData, 0).toString());
             pF.ambilnama = (tb_pegawai.getValueAt(tabelData, 1).toString());
             pF.viewData();
-        } else
-            System.out.print("Tidak bisa membuka");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Tidak ada data yang dipilih");
+        }
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addMouseEntered
@@ -829,18 +849,21 @@ public class mainMenu extends javax.swing.JFrame {
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
-        model.addColumn("Kode Buku");
-        model.addColumn("NIP");
-        model.addColumn("NPM");
+        model.addColumn("Judul Buku");
+        model.addColumn("Pegawai");
+        model.addColumn("Mahasiswa");
         model.addColumn("Tanggal Pinjam");
         model.addColumn("Tanggal Kembali");
 
         try {
-            String sql = "Select * from pinjam where "
+            String sql = "select * from pinjam P inner join buku B on P.kode_buku=B.kode_buku inner join Pegawai Pe on P.nip=Pe.nip inner join mahasiswa M on P.npm=M.npm where "
                     + "id_pinjam like '%" + cari + "%' "
-                    + "OR kode_buku like '%" + cari + "%' "
-                    + "OR nip like '%" + cari + "%' "
-                    + "OR npm like '%" + cari + "%' "
+                    + "OR judul_buku like '%" + cari + "%' "
+                    + "OR P.kode_buku like '%" + cari + "%' "
+                    + "OR nama_pegawai like '%" + cari + "%' "
+                    + "OR P.nip like '%" + cari + "%' "
+                    + "OR nama_mahasiswa like '%" + cari + "%' "
+                    + "OR P.npm like '%" + cari + "%' "
                     + "OR tgl_pinjam like '%" + cari + "%' "
                     + "OR tgl_kembali like '%" + cari + "%' "
                     + "order by id_pinjam asc";
@@ -849,13 +872,13 @@ public class mainMenu extends javax.swing.JFrame {
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
                 String id_pinjam = res.getString("id_pinjam");
-                String kode_buku = res.getString("kode_buku");
-                String nip = res.getString("nip");
-                String npm = res.getString("npm");
+                String kode_buku = res.getString("judul_buku");
+                String nip = res.getString("nama_pegawai");
+                String npm = res.getString("nama_mahasiswa");
                 String tgl_pinjam = res.getString("tgl_pinjam");
                 String tgl_kembali = res.getString("tgl_kembali");
-                String[] dataField = {id_pinjam, kode_buku, nip, npm, tgl_pinjam, tgl_kembali};
-                model.addRow(dataField);
+                String[] searchResult = {id_pinjam, kode_buku, nip, npm, tgl_pinjam, tgl_kembali};
+                model.addRow(searchResult);
             }
             tb_pinjam.setModel(model);
         } catch (Exception e) {
@@ -880,8 +903,8 @@ public class mainMenu extends javax.swing.JFrame {
             while (res.next()) {
                 String nip = res.getString("nip");
                 String nama_pegawai = res.getString("nama_pegawai");
-                String[] dataField = {nip, nama_pegawai};
-                model.addRow(dataField);
+                String[] searchResult = {nip, nama_pegawai};
+                model.addRow(searchResult);
             }
             tb_pegawai.setModel(model);
         } catch (Exception e) {
@@ -915,8 +938,8 @@ public class mainMenu extends javax.swing.JFrame {
                 String penerbit = res.getString("penerbit");
                 String pengarang = res.getString("pengarang");
                 String thn_terbit = res.getString("thn_terbit");
-                String[] dataField = {kode_buku, judul_buku, penerbit, pengarang, thn_terbit};
-                model.addRow(dataField);
+                String[] searchResult = {kode_buku, judul_buku, penerbit, pengarang, thn_terbit};
+                model.addRow(searchResult);
             }
             tb_buku.setModel(model);
         } catch (Exception e) {
@@ -947,8 +970,8 @@ public class mainMenu extends javax.swing.JFrame {
                 String nama_mahasiswa = res.getString("nama_mahasiswa");
                 String jurusan = res.getString("jurusan");
                 String kelas = res.getString("kelas");
-                String[] dataField = {npm, nama_mahasiswa, jurusan, kelas};
-                model.addRow(dataField);
+                String[] searchResult = {npm, nama_mahasiswa, jurusan, kelas};
+                model.addRow(searchResult);
             }
             tb_mahasiswa.setModel(model);
         } catch (Exception e) {
@@ -960,19 +983,19 @@ public class mainMenu extends javax.swing.JFrame {
         tb_pinjam.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
-        model.addColumn("Kode Buku");
-        model.addColumn("NIP");
-        model.addColumn("NPM");
+        model.addColumn("Judul Buku");
+        model.addColumn("Pegawai");
+        model.addColumn("Mahasiswa");
         model.addColumn("Tanggal Pinjam");
         model.addColumn("Tanggal Kembali");
 
         try {
-            String sql = "select*from pinjam order by id_pinjam asc";
+            String sql = "select*from pinjam P inner join buku B on P.kode_buku=B.kode_buku inner join Pegawai Pe on P.nip=Pe.nip inner join mahasiswa M on P.npm=M.npm order by id_pinjam asc";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
-                model.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6)});
+                model.addRow(new Object[]{res.getString("id_pinjam"), res.getString("judul_buku"), res.getString("nama_pegawai"), res.getString("nama_mahasiswa"), res.getString("tgl_pinjam"), res.getString("tgl_kembali")});
             }
             tb_pinjam.setModel(model);
         } catch (Exception e) {
