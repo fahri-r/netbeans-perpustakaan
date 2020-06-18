@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2020 at 04:05 PM
+-- Generation Time: Jun 18, 2020 at 02:29 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -80,7 +79,8 @@ CREATE TABLE `pinjam` (
   `nip` varchar(16) NOT NULL,
   `npm` varchar(16) NOT NULL,
   `tgl_pinjam` date NOT NULL DEFAULT current_timestamp(),
-  `tgl_kembali` date DEFAULT NULL
+  `tgl_kembali` date DEFAULT NULL,
+  `kembali` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -130,9 +130,9 @@ ALTER TABLE `pegawai`
 --
 ALTER TABLE `pinjam`
   ADD PRIMARY KEY (`id_pinjam`),
-  ADD UNIQUE KEY `kode_buku` (`kode_buku`) USING BTREE,
   ADD KEY `nip` (`nip`,`npm`),
-  ADD KEY `npm` (`npm`);
+  ADD KEY `npm` (`npm`),
+  ADD KEY `kode_buku` (`kode_buku`) USING BTREE;
 
 --
 -- Indexes for table `users`
@@ -149,7 +149,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `pinjam`
 --
 ALTER TABLE `pinjam`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -256,7 +256,7 @@ public class pinjamForm extends javax.swing.JFrame {
         LocalDate destDate = sourceDate.plusDays(3);
         String str = destDate.format(DateTimeFormatter.ofPattern("yyy-MM-dd"));
         try {
-            String sql = "INSERT INTO pinjam (kode_buku,nip,npm,tgl_kembali)VALUES('" + txtkodebuku.getText() + "','" + txtnip.getText() + "','" + txtnpm.getText() + "','" + str + "')";
+            String sql = "INSERT INTO pinjam (kode_buku,nip,npm,tgl_kembali,kembali)VALUES('" + txtkodebuku.getText() + "','" + txtnip.getText() + "','" + txtnpm.getText() + "','" + str + "','n')";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();

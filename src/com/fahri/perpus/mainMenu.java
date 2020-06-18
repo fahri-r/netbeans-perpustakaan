@@ -28,6 +28,7 @@ public class mainMenu extends javax.swing.JFrame {
         load_table_buku();
         load_table_pegawai();
         load_table_pinjam();
+        load_table_arsip();
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(screen.width, screen.height);
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
@@ -49,6 +50,7 @@ public class mainMenu extends javax.swing.JFrame {
         btn_buku = new javax.swing.JLabel();
         btn_mahasiswa = new javax.swing.JLabel();
         btn_pegawai = new javax.swing.JLabel();
+        btn_archive = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btn_credits = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
@@ -61,6 +63,7 @@ public class mainMenu extends javax.swing.JFrame {
         btn_add = new javax.swing.JButton();
         btn_refresh = new javax.swing.JButton();
         btn_edit = new javax.swing.JButton();
+        btn_done = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pinjam = new javax.swing.JPanel();
@@ -82,6 +85,9 @@ public class mainMenu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        arsip = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tb_arsip = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -137,6 +143,19 @@ public class mainMenu extends javax.swing.JFrame {
         btn_pegawai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_pegawaiMouseClicked(evt);
+            }
+        });
+
+        btn_archive.setBackground(new java.awt.Color(74, 209, 161));
+        btn_archive.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_archive.setForeground(new java.awt.Color(255, 255, 255));
+        btn_archive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_archive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arsip.png"))); // NOI18N
+        btn_archive.setText("Arsip");
+        btn_archive.setOpaque(true);
+        btn_archive.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_archiveMouseClicked(evt);
             }
         });
 
@@ -227,18 +246,21 @@ public class mainMenu extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_archive, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 564, Short.MAX_VALUE)
-                .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createSequentialGroup()
+                .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(headingLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 319, Short.MAX_VALUE)
+                        .addComponent(namauser, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))
+                    .addGroup(headingLayout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headingLayout.createSequentialGroup()
-                        .addComponent(namauser, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100))))
+                        .addContainerGap())))
         );
         headingLayout.setVerticalGroup(
             headingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +281,8 @@ public class mainMenu extends javax.swing.JFrame {
                         .addComponent(btn_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_credits, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_archive, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(searchPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -350,6 +373,28 @@ public class mainMenu extends javax.swing.JFrame {
         btn_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editActionPerformed(evt);
+            }
+        });
+
+        btn_done.setBackground(new java.awt.Color(74, 209, 161));
+        btn_done.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btn_done.setForeground(new java.awt.Color(255, 255, 255));
+        btn_done.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/selesai.png"))); // NOI18N
+        btn_done.setText("Selesai");
+        btn_done.setBorderPainted(false);
+        btn_done.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_done.setPreferredSize(new java.awt.Dimension(97, 35));
+        btn_done.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_doneMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_doneMouseExited(evt);
+            }
+        });
+        btn_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_doneActionPerformed(evt);
             }
         });
 
@@ -494,7 +539,7 @@ public class mainMenu extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)))
-                .addContainerGap(765, Short.MAX_VALUE))
+                .addContainerGap(517, Short.MAX_VALUE))
         );
         creditsLayout.setVerticalGroup(
             creditsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,20 +554,43 @@ public class mainMenu extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel8))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
 
         jPanel1.add(credits, "card2");
+
+        arsip.setBackground(new java.awt.Color(255, 255, 255));
+        arsip.setLayout(new javax.swing.BoxLayout(arsip, javax.swing.BoxLayout.LINE_AXIS));
+
+        tb_arsip.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tb_arsip.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tb_arsip.setGridColor(new java.awt.Color(240, 240, 240));
+        tb_arsip.setSelectionBackground(new java.awt.Color(29, 209, 161));
+        jScrollPane5.setViewportView(tb_arsip);
+
+        arsip.add(jScrollPane5);
+
+        jPanel1.add(arsip, "card2");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1323, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1055, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
@@ -542,11 +610,12 @@ public class mainMenu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_add, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addComponent(btn_edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_refresh, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(btn_done, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_refresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(7, 7, 7)
+                    .addComponent(btn_edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -559,9 +628,11 @@ public class mainMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btn_done, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 75, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -588,11 +659,16 @@ public class mainMenu extends javax.swing.JFrame {
         resetcolor(btn_mahasiswa);
         resetcolor(btn_pegawai);
         resetcolor(btn_credits);
+        resetcolor(btn_archive);
         pinjam.setVisible(true);
+        arsip.setVisible(false);
         buku.setVisible(false);
         mahasiswa.setVisible(false);
         pegawai.setVisible(false);
         credits.setVisible(false);
+        btn_done.setEnabled(true);
+        btn_edit.setEnabled(true);
+        btn_add.setEnabled(true);
     }//GEN-LAST:event_btn_pinjamMouseClicked
 
     private void btn_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bukuMouseClicked
@@ -600,12 +676,17 @@ public class mainMenu extends javax.swing.JFrame {
         resetcolor(btn_credits);
         resetcolor(btn_pinjam);
         resetcolor(btn_mahasiswa);
+        resetcolor(btn_archive);
         resetcolor(btn_pegawai);
         buku.setVisible(true);
+        arsip.setVisible(false);
         pinjam.setVisible(false);
         mahasiswa.setVisible(false);
         pegawai.setVisible(false);
         credits.setVisible(false);
+        btn_done.setEnabled(false);
+        btn_edit.setEnabled(true);
+        btn_add.setEnabled(true);
     }//GEN-LAST:event_btn_bukuMouseClicked
 
     private void btn_pegawaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pegawaiMouseClicked
@@ -613,25 +694,35 @@ public class mainMenu extends javax.swing.JFrame {
         resetcolor(btn_pinjam);
         resetcolor(btn_credits);
         resetcolor(btn_mahasiswa);
+        resetcolor(btn_archive);
         resetcolor(btn_buku);
+        arsip.setVisible(false);
         pegawai.setVisible(true);
         pinjam.setVisible(false);
         mahasiswa.setVisible(false);
         buku.setVisible(false);
         credits.setVisible(false);
+        btn_done.setEnabled(false);
+        btn_edit.setEnabled(true);
+        btn_add.setEnabled(true);
     }//GEN-LAST:event_btn_pegawaiMouseClicked
 
     private void btn_mahasiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_mahasiswaMouseClicked
         newcolor(btn_mahasiswa);
         resetcolor(btn_credits);
+        resetcolor(btn_archive);
         resetcolor(btn_pinjam);
         resetcolor(btn_buku);
         resetcolor(btn_pegawai);
+        arsip.setVisible(false);
         mahasiswa.setVisible(true);
         pinjam.setVisible(false);
         buku.setVisible(false);
         pegawai.setVisible(false);
         credits.setVisible(false);
+        btn_done.setEnabled(false);
+        btn_edit.setEnabled(true);
+        btn_add.setEnabled(true);
     }//GEN-LAST:event_btn_mahasiswaMouseClicked
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
@@ -661,6 +752,19 @@ public class mainMenu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
             load_table_pinjam();
+            } else if (arsip.isVisible() && !tb_arsip.getSelectionModel().isSelectionEmpty()) {
+            String sql = "delete from pinjam Where id_pinjam=?";
+            int tabelData = tb_arsip.getSelectedRow();
+            try {
+                java.sql.Connection conn = (Connection) koneksi.configDB();
+                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, tb_arsip.getValueAt(tabelData, 0).toString());
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "Data berhasil di hapus");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+            load_table_arsip();
         } else if (buku.isVisible() && !tb_buku.getSelectionModel().isSelectionEmpty()) {
             String sql = "delete from buku Where kode_buku=?";
             int tabelData = tb_buku.getSelectedRow();
@@ -705,6 +809,8 @@ public class mainMenu extends javax.swing.JFrame {
             load_table_buku();
         else if (pegawai.isVisible())
             load_table_pegawai();
+        else if (arsip.isVisible())
+            load_table_arsip();
         else
             System.out.print("Tidak bisa membuka");
     }//GEN-LAST:event_btn_refreshActionPerformed
@@ -810,6 +916,8 @@ public class mainMenu extends javax.swing.JFrame {
             search_buku();
         } else if (pinjam.isVisible()) {
             search_pinjam();
+        } else if (arsip.isVisible()) {
+        search_arsip();
         } else {
             search_pegawai();
         }
@@ -829,14 +937,19 @@ public class mainMenu extends javax.swing.JFrame {
     private void btn_creditsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_creditsMouseClicked
         newcolor(btn_credits);
         resetcolor(btn_mahasiswa);
+        resetcolor(btn_archive);
         resetcolor(btn_pinjam);
         resetcolor(btn_buku);
         resetcolor(btn_pegawai);
+        arsip.setVisible(false);
         mahasiswa.setVisible(false);
         pinjam.setVisible(false);
         buku.setVisible(false);
         pegawai.setVisible(false);
         credits.setVisible(true);
+        btn_done.setEnabled(false);
+        btn_edit.setEnabled(true);
+        btn_add.setEnabled(true);
     }//GEN-LAST:event_btn_creditsMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -844,6 +957,91 @@ public class mainMenu extends javax.swing.JFrame {
         login l = new login();
         l.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_doneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_doneMouseEntered
+         hovercolor(btn_done);
+    }//GEN-LAST:event_btn_doneMouseEntered
+
+    private void btn_doneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_doneMouseExited
+        defaultcolor(btn_done);
+    }//GEN-LAST:event_btn_doneMouseExited
+
+    private void btn_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doneActionPerformed
+        if (pinjam.isVisible() && !tb_pinjam.getSelectionModel().isSelectionEmpty()) {
+            int tabelData = tb_pinjam.getSelectedRow();
+            String sql = "UPDATE pinjam SET kembali='y' where id_pinjam=?";
+            try {
+                java.sql.Connection conn = (Connection) koneksi.configDB();
+                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, tb_pinjam.getValueAt(tabelData, 0).toString());
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "Buku telah dikembalikan");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+            load_table_pinjam();
+        }
+    }//GEN-LAST:event_btn_doneActionPerformed
+
+    private void btn_archiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_archiveMouseClicked
+       newcolor(btn_archive);
+        resetcolor(btn_credits);
+        resetcolor(btn_mahasiswa);
+        resetcolor(btn_pinjam);
+        resetcolor(btn_buku);
+        resetcolor(btn_pegawai);
+        mahasiswa.setVisible(false);
+        arsip.setVisible(true);
+        pinjam.setVisible(false);
+        buku.setVisible(false);
+        pegawai.setVisible(false);
+        credits.setVisible(false);
+        btn_done.setEnabled(false);
+        btn_edit.setEnabled(false);
+        btn_add.setEnabled(false);
+        load_table_arsip();
+    }//GEN-LAST:event_btn_archiveMouseClicked
+    private void search_arsip() {
+        String cari = search.getText();
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Judul Buku");
+        model.addColumn("Pegawai");
+        model.addColumn("Mahasiswa");
+        model.addColumn("Tanggal Pinjam");
+        model.addColumn("Tanggal Kembali");
+
+        try {
+            String sql = "select * from pinjam P inner join buku B on P.kode_buku=B.kode_buku inner join Pegawai Pe on P.nip=Pe.nip inner join mahasiswa M on P.npm=M.npm where "
+                    + "kembali='y' AND ("
+                    + "id_pinjam like '%" + cari + "%' "
+                    + "OR judul_buku like '%" + cari + "%' "
+                    + "OR P.kode_buku like '%" + cari + "%' "
+                    + "OR nama_pegawai like '%" + cari + "%' "
+                    + "OR P.nip like '%" + cari + "%' "
+                    + "OR nama_mahasiswa like '%" + cari + "%' "
+                    + "OR P.npm like '%" + cari + "%' "
+                    + "OR tgl_pinjam like '%" + cari + "%' "
+                    + "OR tgl_kembali like '%" + cari + "%' )"
+                    + "order by id_pinjam asc";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while (res.next()) {
+                String id_pinjam = res.getString("id_pinjam");
+                String kode_buku = res.getString("judul_buku");
+                String nip = res.getString("nama_pegawai");
+                String npm = res.getString("nama_mahasiswa");
+                String tgl_pinjam = res.getString("tgl_pinjam");
+                String tgl_kembali = res.getString("tgl_kembali");
+                String[] searchResult = {id_pinjam, kode_buku, nip, npm, tgl_pinjam, tgl_kembali};
+                model.addRow(searchResult);
+            }
+            tb_arsip.setModel(model);
+        } catch (Exception e) {
+        }
+    }
     private void search_pinjam() {
         String cari = search.getText();
 
@@ -857,6 +1055,7 @@ public class mainMenu extends javax.swing.JFrame {
 
         try {
             String sql = "select * from pinjam P inner join buku B on P.kode_buku=B.kode_buku inner join Pegawai Pe on P.nip=Pe.nip inner join mahasiswa M on P.npm=M.npm where "
+                    + "kembali='n' AND ("
                     + "id_pinjam like '%" + cari + "%' "
                     + "OR judul_buku like '%" + cari + "%' "
                     + "OR P.kode_buku like '%" + cari + "%' "
@@ -865,7 +1064,7 @@ public class mainMenu extends javax.swing.JFrame {
                     + "OR nama_mahasiswa like '%" + cari + "%' "
                     + "OR P.npm like '%" + cari + "%' "
                     + "OR tgl_pinjam like '%" + cari + "%' "
-                    + "OR tgl_kembali like '%" + cari + "%' "
+                    + "OR tgl_kembali like '%" + cari + "%' )"
                     + "order by id_pinjam asc";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
@@ -979,6 +1178,28 @@ public class mainMenu extends javax.swing.JFrame {
     }
 
 //------------------------------------LOAD TABLE------------------------------
+        private void load_table_arsip() {
+        tb_arsip.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Judul Buku");
+        model.addColumn("Pegawai");
+        model.addColumn("Mahasiswa");
+        model.addColumn("Tanggal Pinjam");
+        model.addColumn("Tanggal Kembali");
+
+        try {
+            String sql = "select*from pinjam P inner join buku B on P.kode_buku=B.kode_buku inner join Pegawai Pe on P.nip=Pe.nip inner join mahasiswa M on P.npm=M.npm where kembali = 'y' order by id_pinjam asc";
+            java.sql.Connection conn = (Connection) koneksi.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while (res.next()) {
+                model.addRow(new Object[]{res.getString("id_pinjam"), res.getString("judul_buku"), res.getString("nama_pegawai"), res.getString("nama_mahasiswa"), res.getString("tgl_pinjam"), res.getString("tgl_kembali")});
+            }
+            tb_arsip.setModel(model);
+        } catch (Exception e) {
+        }
+    }
     private void load_table_pinjam() {
         tb_pinjam.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
         DefaultTableModel model = new DefaultTableModel();
@@ -990,7 +1211,7 @@ public class mainMenu extends javax.swing.JFrame {
         model.addColumn("Tanggal Kembali");
 
         try {
-            String sql = "select*from pinjam P inner join buku B on P.kode_buku=B.kode_buku inner join Pegawai Pe on P.nip=Pe.nip inner join mahasiswa M on P.npm=M.npm order by id_pinjam asc";
+            String sql = "select*from pinjam P inner join buku B on P.kode_buku=B.kode_buku inner join Pegawai Pe on P.nip=Pe.nip inner join mahasiswa M on P.npm=M.npm where kembali = 'n' order by id_pinjam asc";
             java.sql.Connection conn = (Connection) koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
@@ -1187,10 +1408,13 @@ public class mainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel arsip;
     private javax.swing.JButton btn_add;
+    private javax.swing.JLabel btn_archive;
     private javax.swing.JLabel btn_buku;
     private javax.swing.JLabel btn_credits;
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_done;
     private javax.swing.JButton btn_edit;
     private javax.swing.JLabel btn_mahasiswa;
     private javax.swing.JLabel btn_pegawai;
@@ -1215,12 +1439,14 @@ public class mainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPanel mahasiswa;
     private javax.swing.JLabel namauser;
     private javax.swing.JPanel pegawai;
     private javax.swing.JPanel pinjam;
     private javax.swing.JTextField search;
     private javax.swing.JPanel searchPanel;
+    private javax.swing.JTable tb_arsip;
     private javax.swing.JTable tb_buku;
     private javax.swing.JTable tb_mahasiswa;
     private javax.swing.JTable tb_pegawai;
